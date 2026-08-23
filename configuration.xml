@@ -3075,10 +3075,10 @@
                   <number_of_fifo_buffers index="1">
                     <value>1</value>
                   </number_of_fifo_buffers>
-                  <new_message_interrupt index="0">
-                    <value>DISABLED</value>
+                  <new_message_interrupt index="1">
+                    <value>ENABLED</value>
                   </new_message_interrupt>
-                  <new_message_callback disabled="true">
+                  <new_message_callback>
                     <value />
                   </new_message_callback>
                   <watermark_interrupt index="0">
@@ -3099,7 +3099,22 @@
                   <fifo_message_lost_callback disabled="true">
                     <value />
                   </fifo_message_lost_callback>
-                  <fifo_buffer_filters />
+                  <fifo_buffer_filters>
+                    <filter>
+                      <id_type index="0">
+                        <value>Standard</value>
+                      </id_type>
+                      <filter_type index="0">
+                        <value>RANGE</value>
+                      </filter_type>
+                      <filter_id_1>
+                        <value>0x0</value>
+                      </filter_id_1>
+                      <filter_id_2>
+                        <value>0x7ff</value>
+                      </filter_id_2>
+                    </filter>
+                  </fifo_buffer_filters>
                 </fifo_0_configuration>
                 <fifo_1_configuration>
                   <interrupt_line index="0">

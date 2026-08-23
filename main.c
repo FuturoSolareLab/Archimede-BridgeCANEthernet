@@ -42,6 +42,19 @@ void mcanconf_CANrxreceive(uint32_t msgbuf, CANRxFrame crfp) {
 	(void) crfp;
 
 	/* Salviamo i dati */
+//	CAN_id = crfp.ID;
+//	CAN_DLC = crfp.DLC;
+//	CAN_data[0] = crfp.data32[0];
+//	CAN_data[1] = crfp.data32[1];
+//
+//	New_msg = TRUE;		// Abbilitiamo il flag
+}
+
+void mcanconf_CAN_Vehicle_Rx_Callback(uint32_t msgbuf, CANRxFrame crfp) {
+	(void) msgbuf;  // Default
+	(void) crfp;
+
+	/* Salviamo i dati */
 	CAN_id = crfp.ID;
 	CAN_DLC = crfp.DLC;
 	CAN_data[0] = crfp.data32[0];
@@ -49,6 +62,7 @@ void mcanconf_CANrxreceive(uint32_t msgbuf, CANRxFrame crfp) {
 
 	New_msg = TRUE;		// Abbilitiamo il flag
 }
+
 
 
 /* Inizializzazione periferiche */
