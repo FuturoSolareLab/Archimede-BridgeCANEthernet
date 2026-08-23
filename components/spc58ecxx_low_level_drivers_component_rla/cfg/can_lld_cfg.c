@@ -73,7 +73,7 @@ CANConfig can_config_mcanconf = {
   /*FIFO 0 new message interrupt*/
   CAN_INTERRUPT_ENABLED,
   /*FIFO 0 new message interrupt call back */
-  NULL,
+  mcanconf_CAN_Vehicle_Rx_Callback,
   /*FIFO 0 watermark interrupt*/
   CAN_INTERRUPT_DISABLED, NULL,
   /*FIFO 0 fifo full interrupt*/
@@ -84,7 +84,8 @@ CANConfig can_config_mcanconf = {
   CAN_FIFO1_INT_DISABLE,0,NULL,0,NULL,0,NULL,0,NULL,
   /* rx standard buffer filters */
   {
-  {0x0UL,0x7ffUL,CAN_FILTER_RANGE,CAN_FIFO0}, /* standard filter 0*/
+  {0x0UL,0UL,0U,7U}, /* standard filter 0*/
+  {0x0UL,0x7ffUL,CAN_FILTER_RANGE,CAN_FIFO0}, /* standard filter 1*/
   {0UL,0UL,0U,0U},  /* standard_filter unused 0 (MISRA Compliance) */
   {0UL,0UL,0U,0U},  /* standard_filter unused 1 (MISRA Compliance) */
   },
@@ -94,7 +95,7 @@ CANConfig can_config_mcanconf = {
   {0UL,0UL,0U,0U},  /* extended_filter unused 1 (MISRA Compliance) */
   },
 /* number of standard filters */
-  1U,
+  2U,
 /* number of extended filters */
   0U,
   /* number of Rx Buffers */

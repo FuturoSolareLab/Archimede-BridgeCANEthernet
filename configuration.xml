@@ -88,8 +88,8 @@
           <compiler_variant>
             <value>FreeGCC with VLE support</value>
           </compiler_variant>
-          <optimization_level index="3">
-            <value>-O2 speed</value>
+          <optimization_level index="0">
+            <value>-O0 none</value>
           </optimization_level>
           <use_fpu>
             <value>false</value>
@@ -3066,7 +3066,19 @@
                   <number_of_rx_buffers index="32">
                     <value>32</value>
                   </number_of_rx_buffers>
-                  <rx_buffer_filters />
+                  <rx_buffer_filters>
+                    <filter>
+                      <filter_type index="0">
+                        <value>Standard</value>
+                      </filter_type>
+                      <filter_value>
+                        <value>0x0</value>
+                      </filter_value>
+                      <rx_buffer_number>
+                        <value>0</value>
+                      </rx_buffer_number>
+                    </filter>
+                  </rx_buffer_filters>
                 </rx_buffer_configuration>
                 <fifo_0_configuration>
                   <interrupt_line index="1">
@@ -3079,7 +3091,7 @@
                     <value>ENABLED</value>
                   </new_message_interrupt>
                   <new_message_callback>
-                    <value />
+                    <value>CAN_Vehicle_Rx_Callback</value>
                   </new_message_callback>
                   <watermark_interrupt index="0">
                     <value>DISABLED</value>

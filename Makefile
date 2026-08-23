@@ -19,7 +19,7 @@ COMPILER=freegcc
 
 # Compiler options here.
 ifeq ($(USE_OPT),)
-  USE_OPT = -O2  -gdwarf-2 -fomit-frame-pointer -falign-functions=16 -fno-gcse -std=gnu99
+  USE_OPT = -O0  -gdwarf-2 -fomit-frame-pointer -falign-functions=16 -fno-gcse -std=gnu99
 endif
 
 # C specific options here (added to USE_OPT).
@@ -142,7 +142,7 @@ INCDIR =    $(LIB_INCLUDES) \
 # Compiler settings
 #
 
-export PATH := C:\AutoDevKitStudio-2.4.0\eclipse\plugins\com.st.tools.spc5.tools.gnu.gcc.ppcvle.win32_4.9.4.202604220512\toolchain\bin\$(PATH_SEPARATOR)${PATH}
+export PATH := C:\AutoDevKitStudio-2.6.1\eclipse\plugins\com.st.tools.spc5.tools.gnu.gcc.ppcvle.win32_4.9.4.202604220512\toolchain\bin\$(PATH_SEPARATOR)${PATH}
 
 
 MCU = -mcpu=e200z4 -mvle

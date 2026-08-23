@@ -58,6 +58,7 @@ extern "C" {
   /* List of the callback functions referenced from the CANConfig
      structures in can_lld_cfg.c.*/
 void mcanconf_CANrxreceive(uint32_t msgbuf, CANRxFrame crfp);
+void mcanconf_CAN_Vehicle_Rx_Callback(uint32_t msgbuf, CANRxFrame crfp);
 #ifdef __cplusplus
 }
 #endif

@@ -24,7 +24,7 @@
 
 uint8_t buffer[64];		// Buffer per invio messaggio su seriale		--> char e uint8_t sono uguali
 
-uint8_t CAN_id = 0;		// Variabile tmp per salvare il CAN ID
+uint32_t CAN_id = 0;		// Variabile tmp per salvare il CAN ID
 uint8_t CAN_DLC = 0;	// Variabile tmp per salvare il CAN DLC
 uint32_t	CAN_data[2];	// Variabile tmp per salvare il CAN payload
 
@@ -42,12 +42,12 @@ void mcanconf_CANrxreceive(uint32_t msgbuf, CANRxFrame crfp) {
 	(void) crfp;
 
 	/* Salviamo i dati */
-//	CAN_id = crfp.ID;
-//	CAN_DLC = crfp.DLC;
-//	CAN_data[0] = crfp.data32[0];
-//	CAN_data[1] = crfp.data32[1];
-//
-//	New_msg = TRUE;		// Abbilitiamo il flag
+	CAN_id = crfp.ID;
+	CAN_DLC = crfp.DLC;
+	CAN_data[0] = crfp.data32[0];
+	CAN_data[1] = crfp.data32[1];
+
+	New_msg = TRUE;		// Abbilitiamo il flag
 }
 
 void mcanconf_CAN_Vehicle_Rx_Callback(uint32_t msgbuf, CANRxFrame crfp) {
@@ -97,7 +97,7 @@ int main(void) {
 		  len = 0;								// Cancelliamo il contatore
 
 		  /* ID */
-		  len += sprintf(&buffer[len], "ID=%02X P=", CAN_id);
+		  len += sprintf(&buffer[len], "ID=%08lX P=", CAN_id);
 
 		  /* Payload */
 		  len += sprintf(&buffer[len], "%08lX%08lX", CAN_data[0], CAN_data[1]);
