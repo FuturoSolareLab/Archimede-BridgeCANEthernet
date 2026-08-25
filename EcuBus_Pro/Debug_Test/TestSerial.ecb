@@ -1,0 +1,446 @@
+{
+  "data": {
+    "devices": {
+      "e332bac9-d18b-41e8-bbe5-20f9cce89ef8": {
+        "type": "can",
+        "canDevice": {
+          "id": "e332bac9-d18b-41e8-bbe5-20f9cce89ef8",
+          "name": "SLCAN_0",
+          "handle": "COM4",
+          "vendor": "slcan",
+          "canfd": false,
+          "database": "",
+          "bitrate": {
+            "sjw": 1,
+            "timeSeg1": 13,
+            "timeSeg2": 2,
+            "preScaler": 10,
+            "freq": 500000,
+            "clock": "80",
+            "_X_ROW_KEY": "row_20"
+          }
+        }
+      }
+    },
+    "ia": {
+      "959437ed-ebf8-4ea1-91db-fff735c64e00": {
+        "name": "Can IA",
+        "type": "can",
+        "id": "959437ed-ebf8-4ea1-91db-fff735c64e00",
+        "devices": [
+          "e332bac9-d18b-41e8-bbe5-20f9cce89ef8"
+        ],
+        "action": [
+          {
+            "uuid": "dc509ab0-0d92-440a-be7d-028f5e12cab9",
+            "trigger": {
+              "type": "periodic",
+              "period": 500
+            },
+            "name": "",
+            "id": "80",
+            "channel": "e332bac9-d18b-41e8-bbe5-20f9cce89ef8",
+            "type": "can",
+            "dlc": 1,
+            "data": []
+          },
+          {
+            "uuid": "4e813210-3cee-464f-88e0-2405181196e5",
+            "trigger": {
+              "type": "periodic",
+              "period": 2000
+            },
+            "name": "",
+            "id": "0400ff80",
+            "channel": "e332bac9-d18b-41e8-bbe5-20f9cce89ef8",
+            "type": "can",
+            "dlc": 8,
+            "data": [
+              "01"
+            ]
+          }
+        ]
+      }
+    },
+    "tester": {},
+    "subFunction": {},
+    "nodes": {
+      "7b434857-755f-4ad6-86c1-00d35ce664d2": {
+        "name": "SoloMotorRespons",
+        "id": "7b434857-755f-4ad6-86c1-00d35ce664d2",
+        "channel": [
+          "e332bac9-d18b-41e8-bbe5-20f9cce89ef8"
+        ],
+        "script": "SoloMotor_Sim.ts",
+        "workNode": ""
+      },
+      "dbcb29d0-bc4b-4a5f-89be-e83dffa11a14": {
+        "name": "BMS",
+        "id": "dbcb29d0-bc4b-4a5f-89be-e83dffa11a14",
+        "channel": [
+          "e332bac9-d18b-41e8-bbe5-20f9cce89ef8"
+        ],
+        "script": "BMS.ts",
+        "workNode": ""
+      },
+      "dcb19906-86dd-452d-902e-c055c8c39d18": {
+        "name": "MPPT",
+        "id": "dcb19906-86dd-452d-902e-c055c8c39d18",
+        "channel": [
+          "e332bac9-d18b-41e8-bbe5-20f9cce89ef8"
+        ],
+        "script": "MPPT.ts",
+        "workNode": ""
+      },
+      "61540bd4-5440-49ab-a1fb-366526b7a02c": {
+        "name": "Light",
+        "id": "61540bd4-5440-49ab-a1fb-366526b7a02c",
+        "channel": [
+          "e332bac9-d18b-41e8-bbe5-20f9cce89ef8"
+        ],
+        "script": "Light.ts",
+        "workNode": ""
+      },
+      "e11a6069-f6c9-45d1-931f-cb6848590ad4": {
+        "name": "Test",
+        "id": "e11a6069-f6c9-45d1-931f-cb6848590ad4",
+        "channel": [
+          "e332bac9-d18b-41e8-bbe5-20f9cce89ef8"
+        ],
+        "script": "Test.ts",
+        "workNode": ""
+      }
+    },
+    "database": {
+      "lin": {},
+      "can": {},
+      "orti": {}
+    },
+    "graphs": {
+      "Statistics.e332bac9-d18b-41e8-bbe5-20f9cce89ef8.FrameFreq": {
+        "type": "variable",
+        "enable": true,
+        "id": "Statistics.e332bac9-d18b-41e8-bbe5-20f9cce89ef8.FrameFreq",
+        "name": "FrameFreq",
+        "color": "#8517b2",
+        "yAxis": {
+          "min": 11.15,
+          "max": 211.1500000000001,
+          "unit": "f/s",
+          "splitLine": {
+            "show": false
+          },
+          "name": "FrameFreq"
+        },
+        "bindValue": {
+          "variableId": "Statistics.e332bac9-d18b-41e8-bbe5-20f9cce89ef8.FrameFreq",
+          "variableType": "system",
+          "variableName": "FrameFreq",
+          "variableFullName": "Statistics.SLCAN_0.FrameFreq",
+          "variableValueType": "number"
+        },
+        "graph": {
+          "id": "graph"
+        },
+        "xAxis": {
+          "splitLine": {
+            "show": false,
+            "lineStyle": {
+              "type": "dashed"
+            }
+          },
+          "axisPointer": {
+            "show": true
+          }
+        },
+        "disZoom": false,
+        "tooltip": {
+          "show": true
+        },
+        "series": {
+          "step": "end",
+          "showSymbol": true,
+          "symbolSize": 10,
+          "symbol": "circle"
+        }
+      }
+    },
+    "guages": {},
+    "vars": {},
+    "datas": {
+      "Statistics.e332bac9-d18b-41e8-bbe5-20f9cce89ef8.BusLoad": {
+        "type": "variable",
+        "enable": true,
+        "id": "Statistics.e332bac9-d18b-41e8-bbe5-20f9cce89ef8.BusLoad",
+        "name": "BusLoad",
+        "color": "#950fe0",
+        "yAxis": {
+          "min": 0,
+          "max": 100,
+          "unit": "%"
+        },
+        "bindValue": {
+          "variableId": "Statistics.e332bac9-d18b-41e8-bbe5-20f9cce89ef8.BusLoad",
+          "variableType": "system",
+          "variableName": "BusLoad",
+          "variableFullName": "Statistics.SLCAN_0.BusLoad",
+          "variableValueType": "number"
+        },
+        "graph": {
+          "id": "datas"
+        }
+      },
+      "Statistics.e332bac9-d18b-41e8-bbe5-20f9cce89ef8.BusLoadMin": {
+        "type": "variable",
+        "enable": true,
+        "id": "Statistics.e332bac9-d18b-41e8-bbe5-20f9cce89ef8.BusLoadMin",
+        "name": "BusLoadMin",
+        "color": "#65c394",
+        "yAxis": {
+          "min": 0,
+          "max": 100,
+          "unit": "%"
+        },
+        "bindValue": {
+          "variableId": "Statistics.e332bac9-d18b-41e8-bbe5-20f9cce89ef8.BusLoadMin",
+          "variableType": "system",
+          "variableName": "BusLoadMin",
+          "variableFullName": "Statistics.SLCAN_0.BusLoadMin",
+          "variableValueType": "number"
+        },
+        "graph": {
+          "id": "datas"
+        }
+      },
+      "Statistics.e332bac9-d18b-41e8-bbe5-20f9cce89ef8.BusLoadMax": {
+        "type": "variable",
+        "enable": true,
+        "id": "Statistics.e332bac9-d18b-41e8-bbe5-20f9cce89ef8.BusLoadMax",
+        "name": "BusLoadMax",
+        "color": "#15e397",
+        "yAxis": {
+          "min": 0,
+          "max": 100,
+          "unit": "%"
+        },
+        "bindValue": {
+          "variableId": "Statistics.e332bac9-d18b-41e8-bbe5-20f9cce89ef8.BusLoadMax",
+          "variableType": "system",
+          "variableName": "BusLoadMax",
+          "variableFullName": "Statistics.SLCAN_0.BusLoadMax",
+          "variableValueType": "number"
+        },
+        "graph": {
+          "id": "datas"
+        }
+      },
+      "Statistics.e332bac9-d18b-41e8-bbe5-20f9cce89ef8.BusLoadAvg": {
+        "type": "variable",
+        "enable": true,
+        "id": "Statistics.e332bac9-d18b-41e8-bbe5-20f9cce89ef8.BusLoadAvg",
+        "name": "BusLoadAvg",
+        "color": "#267ba2",
+        "yAxis": {
+          "min": 0,
+          "max": 100,
+          "unit": "%"
+        },
+        "bindValue": {
+          "variableId": "Statistics.e332bac9-d18b-41e8-bbe5-20f9cce89ef8.BusLoadAvg",
+          "variableType": "system",
+          "variableName": "BusLoadAvg",
+          "variableFullName": "Statistics.SLCAN_0.BusLoadAvg",
+          "variableValueType": "number"
+        },
+        "graph": {
+          "id": "datas"
+        }
+      },
+      "Statistics.e332bac9-d18b-41e8-bbe5-20f9cce89ef8.FrameFreq": {
+        "type": "variable",
+        "enable": true,
+        "id": "Statistics.e332bac9-d18b-41e8-bbe5-20f9cce89ef8.FrameFreq",
+        "name": "FrameFreq",
+        "color": "#223a32",
+        "yAxis": {
+          "min": 0,
+          "max": 100,
+          "unit": "f/s"
+        },
+        "bindValue": {
+          "variableId": "Statistics.e332bac9-d18b-41e8-bbe5-20f9cce89ef8.FrameFreq",
+          "variableType": "system",
+          "variableName": "FrameFreq",
+          "variableFullName": "Statistics.SLCAN_0.FrameFreq",
+          "variableValueType": "number"
+        },
+        "graph": {
+          "id": "datas"
+        }
+      }
+    },
+    "panels": {},
+    "logs": {},
+    "traces": {
+      "trace": {
+        "id": "trace",
+        "name": "Trace",
+        "filter": [
+          "canBase",
+          "ipBase",
+          "linBase",
+          "serialBase",
+          "uds",
+          "someipBase",
+          "osTrace"
+        ],
+        "filterDevice": [],
+        "filterId": [],
+        "columnConfig": [
+          {
+            "key": "seqIndex",
+            "visible": true,
+            "width": 80
+          },
+          {
+            "key": "ts",
+            "visible": false,
+            "width": 200
+          },
+          {
+            "key": "deltaTs",
+            "visible": true,
+            "width": 120
+          },
+          {
+            "key": "absTimeStr",
+            "visible": false,
+            "width": 200
+          },
+          {
+            "key": "id",
+            "visible": true,
+            "width": 100
+          },
+          {
+            "key": "name",
+            "visible": false,
+            "width": 200
+          },
+          {
+            "key": "dlc",
+            "visible": true,
+            "width": 100
+          },
+          {
+            "key": "data",
+            "visible": true,
+            "width": 300
+          },
+          {
+            "key": "dir",
+            "visible": false,
+            "width": 50
+          },
+          {
+            "key": "len",
+            "visible": false,
+            "width": 100
+          },
+          {
+            "key": "msgType",
+            "visible": false,
+            "width": 100
+          },
+          {
+            "key": "channel",
+            "visible": false,
+            "width": 100
+          },
+          {
+            "key": "device",
+            "visible": false,
+            "width": 200
+          }
+        ]
+      }
+    },
+    "pluginData": {},
+    "replays": {}
+  },
+  "project": {
+    "wins": {
+      "message": {
+        "pos": {
+          "x": 383,
+          "y": 219,
+          "w": 2561.33,
+          "h": 456.66700000000003
+        },
+        "options": {
+          "params": {}
+        },
+        "title": "message",
+        "label": "Message",
+        "id": "message",
+        "layoutType": "bottom",
+        "hide": true
+      },
+      "959437ed-ebf8-4ea1-91db-fff735c64e00_ia": {
+        "pos": {
+          "x": 6,
+          "y": 0,
+          "w": 919,
+          "h": 676.323
+        },
+        "title": "cani",
+        "label": "IA",
+        "id": "959437ed-ebf8-4ea1-91db-fff735c64e00_ia",
+        "options": {
+          "params": {
+            "edit-index": "959437ed-ebf8-4ea1-91db-fff735c64e00"
+          },
+          "name": "Can IA"
+        },
+        "hide": false,
+        "backupPos": {
+          "x": -424,
+          "y": 100,
+          "w": 2560,
+          "h": 776.333
+        },
+        "isMax": false
+      },
+      "trace": {
+        "pos": {
+          "x": 921,
+          "y": 1,
+          "w": 1602,
+          "h": 754
+        },
+        "title": "trace",
+        "label": "Trace",
+        "id": "trace",
+        "options": {
+          "params": {
+            "edit-index": "trace"
+          },
+          "name": "Trace"
+        },
+        "hide": false
+      },
+      "network": {
+        "pos": {
+          "x": 264,
+          "y": 202.15625,
+          "w": 600,
+          "h": 400
+        },
+        "title": "network",
+        "label": "Network",
+        "id": "network",
+        "options": {}
+      }
+    }
+  }
+}

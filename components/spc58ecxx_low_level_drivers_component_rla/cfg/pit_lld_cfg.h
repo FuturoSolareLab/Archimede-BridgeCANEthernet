@@ -50,11 +50,13 @@
 /*===========================================================================*/
 
 /* List of the PITConfig structures defined in pit_lld_cfg.c.*/
+extern PIT_CH_Config pit0_config[SPC5_PIT0_CHANNELS];
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 /*Callback Prototypes*/
+  void Timer_tick_CallBck(void);
 #ifdef __cplusplus
 }
 #endif

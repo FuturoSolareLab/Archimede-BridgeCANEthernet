@@ -29,7 +29,7 @@
  */
 #define LLD_USE_DMA                 TRUE
 #define LLD_USE_PAL                 TRUE
-#define LLD_USE_PIT                 FALSE
+#define LLD_USE_PIT                 TRUE
 #define LLD_USE_STM                 FALSE
 #define LLD_USE_SERIAL              TRUE
 #define LLD_USE_PWM                 FALSE
@@ -305,9 +305,9 @@
 /*
 * PIT v2 driver system settings.
 */
-#define SPC5_PIT_USE_PIT0                   FALSE
+#define SPC5_PIT_USE_PIT0                   TRUE
 #define PIT0_CHANNEL_CH0_ENABLED            FALSE
-#define PIT0_CHANNEL_CH1_ENABLED            FALSE
+#define PIT0_CHANNEL_CH1_ENABLED            TRUE
 #define PIT0_CHANNEL_CH2_ENABLED            FALSE
 #define PIT0_CHANNEL_CH3_ENABLED            FALSE
 #define PIT0_CHANNEL_CH4_ENABLED            FALSE
@@ -626,7 +626,7 @@
  * CAN SUBSYSTEM driver filter settings.
 */
 /* MCAN filter configuration */
-#define SPC5_CAN_SUB_MAX_STD_FILTERS          4
+#define SPC5_CAN_SUB_MAX_STD_FILTERS          6
 #define SPC5_CAN_SUB_MAX_XTD_FILTERS          2
 #define SPC5_CAN_MAX_DATA_LENGHT			  8U	
 

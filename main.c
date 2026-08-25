@@ -17,23 +17,38 @@
 
 #include "can_lld_cfg.h"
 #include "serial_lld_cfg.h"
+#include "pit_lld_cfg.h"
 
-#include <stdio.h>
-#include <stdint.h>
-#include <string.h>
+#include "can_hal.h"
 
-uint8_t buffer[64];		// Buffer per invio messaggio su seriale		--> char e uint8_t sono uguali
+#define ID_CAN_BMS 0x0400FF80
+#define ID_CAN_SOLOMOTOR 0x80
 
-uint32_t CAN_id = 0;		// Variabile tmp per salvare il CAN ID
-uint8_t CAN_DLC = 0;	// Variabile tmp per salvare il CAN DLC
-uint32_t	CAN_data[2];	// Variabile tmp per salvare il CAN payload
+/* TIMER NMT
+ * Define timer for Network manager, base timer 100ms */
+#define TIMER_NMT_SOLOMOTOR		5 // Time 500ms
+#define TIMER_NMT_BMS			20 // Timer 2000 ms
 
-uint8_t New_msg = FALSE;	// Flag per inviare il msg
-uint16_t len = 0;			// Variabile per salvare la sungezza msg
+uint8_t TIMER_cnt = 0;			// Counter tick
+uint8_t TIMER_Flag = FALSE;
+
+/* CAN msg */
+extern uint8_t Handle_Req_newmsg;	// Flag per inviare il msg
+
+CANTxFrame BMS_msg;
+CANTxFrame SOLOMotor_msg;
+
+
 
 /* Incaso di errore di inviao sulla seriale */
 void Serial_DMA_ErrorCbck(SerialDriver *sdp){
 	 (void) sdp;
+}
+
+/* TIMER CALLBCK */
+void Timer_tick_CallBck(void){
+	TIMER_cnt++;
+	TIMER_Flag = TRUE;
 }
 
 /* CAN interrupt */
@@ -41,27 +56,27 @@ void mcanconf_CANrxreceive(uint32_t msgbuf, CANRxFrame crfp) {
 	(void) msgbuf;  // Default
 	(void) crfp;
 
-	/* Salviamo i dati */
-	CAN_id = crfp.ID;
-	CAN_DLC = crfp.DLC;
-	CAN_data[0] = crfp.data32[0];
-	CAN_data[1] = crfp.data32[1];
+//	/* Salviamo i dati */
+//	CAN_id = crfp.ID;
+//	CAN_DLC = crfp.DLC;
+//	CAN_data[0] = crfp.data32[0];
+//	CAN_data[1] = crfp.data32[1];
 
-	New_msg = TRUE;		// Abbilitiamo il flag
+	Handle_Req_newmsg = TRUE;		// Abbilitiamo il flag
 }
 
-void mcanconf_CAN_Vehicle_Rx_Callback(uint32_t msgbuf, CANRxFrame crfp) {
-	(void) msgbuf;  // Default
-	(void) crfp;
-
-	/* Salviamo i dati */
-	CAN_id = crfp.ID;
-	CAN_DLC = crfp.DLC;
-	CAN_data[0] = crfp.data32[0];
-	CAN_data[1] = crfp.data32[1];
-
-	New_msg = TRUE;		// Abbilitiamo il flag
-}
+//void mcanconf_CAN_Vehicle_Rx_Callback(uint32_t msgbuf, CANRxFrame crfp) {
+//	(void) msgbuf;  // Default
+//	(void) crfp;
+//
+//	/* Salviamo i dati */
+//	CAN_id = crfp.ID;
+//	CAN_DLC = crfp.DLC;
+//	CAN_data[0] = crfp.data32[0];
+//	CAN_data[1] = crfp.data32[1];
+//
+//	Handle_Req_newmsg = TRUE;		// Abbilitiamo il flag
+//}
 
 
 
@@ -72,6 +87,27 @@ void Init_Periferiche(void){
 
 	sd_lld_init();
 	sd_lld_start(&SD1, &serial_config_configuration_name);
+
+	pit_lld_init();
+	pit_lld_start(&PITD1, &pit0_config);
+	pit_lld_channel_start(&PITD1, PIT0_CHANNEL_CH1);
+}
+
+void Init_CAN_msg(){
+	BMS_msg.OPERATION = CAN_OP_NORMAL;
+	BMS_msg.TYPE = CAN_ID_XTD;
+	BMS_msg.ID	= ID_CAN_BMS;
+	BMS_msg.DLC = 8;
+	BMS_msg.data32[0] = 0x00;
+	BMS_msg.data32[1] = 0x00;
+
+
+	SOLOMotor_msg.OPERATION = CAN_OP_NORMAL;
+	SOLOMotor_msg.TYPE = CAN_ID_STD;
+	SOLOMotor_msg.ID	= ID_CAN_SOLOMOTOR;
+	SOLOMotor_msg.DLC = 1;
+	SOLOMotor_msg.data32[0] = 0x00;
+	SOLOMotor_msg.data32[1] = 0x00;
 }
 
 /*
@@ -85,27 +121,31 @@ int main(void) {
 
   Init_Periferiche();
 
+  Init_CAN_msg();
+
   /* Uncomment the below routine to Enable Interrupts. */
    irqIsrEnable();
-  
+   SOLO_TPDO_Setting(1);
   /* Application main loop.*/
   for ( ; ; ) {
-	  if(New_msg == TRUE){
-		  New_msg = FALSE;
+	  if(Handle_Req_newmsg == TRUE){
+		  Handle_Req_newmsg = FALSE;
+		  Serial_RX_msg();
 
-		  memset(buffer, 0, sizeof(buffer));	// Cancelliamo il buffer
-		  len = 0;								// Cancelliamo il contatore
-
-		  /* ID */
-		  len += sprintf(&buffer[len], "ID=%08lX P=", CAN_id);
-
-		  /* Payload */
-		  len += sprintf(&buffer[len], "%08lX%08lX", CAN_data[0], CAN_data[1]);
-
-		  /* Fine messaggio */
-		  len += sprintf(&buffer[len], "\r\n");
-
-		  sd_lld_write(&SD1, buffer, len);
+	  }
+	  if(TIMER_Flag){
+		  TIMER_Flag = FALSE;
+		  if(TIMER_cnt % TIMER_NMT_BMS == 0){
+			  /* Invio messaggio per i BMS */
+			  can_lld_transmit(&CAND1, CAN_ANY_TXBUFFER, &BMS_msg);
+			  Serial_TX_msg(BMS_msg.ID, BMS_msg.DLC, BMS_msg.data32);
+		  }
+		  if(TIMER_cnt % TIMER_NMT_SOLOMOTOR == 0){
+			  /* Invio NMT per i driver SOLO */
+			  can_lld_transmit(&CAND1, CAN_ANY_TXBUFFER, &SOLOMotor_msg);
+			  Serial_TX_msg(SOLOMotor_msg.ID, SOLOMotor_msg.DLC, SOLOMotor_msg.data32);
+		  }
+		  if(TIMER_cnt == 100) TIMER_cnt = 0;
 	  }
   }
 }

@@ -142,7 +142,7 @@ INCDIR =    $(LIB_INCLUDES) \
 # Compiler settings
 #
 
-export PATH := C:\AutoDevKitStudio-2.6.1\eclipse\plugins\com.st.tools.spc5.tools.gnu.gcc.ppcvle.win32_4.9.4.202604220512\toolchain\bin\$(PATH_SEPARATOR)${PATH}
+export PATH := C:\AutoDevKitStudio-2.4.0\eclipse\plugins\com.st.tools.spc5.tools.gnu.gcc.ppcvle.win32_4.9.4.202604220512\toolchain\bin\$(PATH_SEPARATOR)${PATH}
 
 
 MCU = -mcpu=e200z4 -mvle

@@ -1287,7 +1287,7 @@
             <value>true</value>
           </serial>
           <pit>
-            <value>false</value>
+            <value>true</value>
           </pit>
           <stm>
             <value>false</value>
@@ -3126,20 +3126,34 @@
                         <value>0x7ff</value>
                       </filter_id_2>
                     </filter>
+                    <filter>
+                      <id_type index="0">
+                        <value>Standard</value>
+                      </id_type>
+                      <filter_type index="0">
+                        <value>RANGE</value>
+                      </filter_type>
+                      <filter_id_1>
+                        <value>0x400ff80</value>
+                      </filter_id_1>
+                      <filter_id_2>
+                        <value>0x40e8010</value>
+                      </filter_id_2>
+                    </filter>
                   </fifo_buffer_filters>
                 </fifo_0_configuration>
                 <fifo_1_configuration>
                   <interrupt_line index="0">
                     <value>DISABLED</value>
                   </interrupt_line>
-                  <number_of_fifo_buffers index="0">
-                    <value>0</value>
+                  <number_of_fifo_buffers index="1">
+                    <value>1</value>
                   </number_of_fifo_buffers>
-                  <new_message_interrupt disabled="true" index="0">
-                    <value>DISABLED</value>
+                  <new_message_interrupt disabled="true" index="1">
+                    <value>ENABLED</value>
                   </new_message_interrupt>
-                  <new_message_callback disabled="true">
-                    <value />
+                  <new_message_callback>
+                    <value>CAN_SoloMotor_Callback</value>
                   </new_message_callback>
                   <watermark_interrupt disabled="true" index="0">
                     <value>DISABLED</value>
@@ -3159,7 +3173,22 @@
                   <fifo_message_lost_callback disabled="true">
                     <value />
                   </fifo_message_lost_callback>
-                  <fifo_buffer_filters />
+                  <fifo_buffer_filters>
+                    <filter>
+                      <id_type index="0">
+                        <value>Standard</value>
+                      </id_type>
+                      <filter_type index="0">
+                        <value>RANGE</value>
+                      </filter_type>
+                      <filter_id_1>
+                        <value>0x580</value>
+                      </filter_id_1>
+                      <filter_id_2>
+                        <value>0x582</value>
+                      </filter_id_2>
+                    </filter>
+                  </fifo_buffer_filters>
                 </fifo_1_configuration>
                 <tx_configuration>
                   <tx_mode index="0">
@@ -3189,12 +3218,12 @@
             </global_tx_counter>
           </debug_options>
         </mcan_settings>
-        <pit_settings disabled="true">
-          <pit0 disabled="true">
-            <pit0 disabled="true">
-              <value>false</value>
+        <pit_settings>
+          <pit0>
+            <pit0>
+              <value>true</value>
             </pit0>
-            <channel_0 disabled="true">
+            <channel_0>
               <enabled disabled="true">
                 <value>false</value>
               </enabled>
@@ -3205,19 +3234,19 @@
                 <value />
               </callback>
             </channel_0>
-            <channel_1 disabled="true">
-              <enabled disabled="true">
-                <value>false</value>
+            <channel_1>
+              <enabled>
+                <value>true</value>
               </enabled>
-              <frequency disabled="true">
-                <value>0</value>
+              <frequency>
+                <value>10</value>
               </frequency>
-              <callback disabled="true">
-                <value />
+              <callback>
+                <value>Timer_tick_CallBck</value>
               </callback>
             </channel_1>
-            <channel_2 disabled="true">
-              <enabled disabled="true">
+            <channel_2>
+              <enabled>
                 <value>false</value>
               </enabled>
               <frequency disabled="true">
@@ -3227,8 +3256,8 @@
                 <value />
               </callback>
             </channel_2>
-            <channel_3 disabled="true">
-              <enabled disabled="true">
+            <channel_3>
+              <enabled>
                 <value>false</value>
               </enabled>
               <frequency disabled="true">
@@ -3238,8 +3267,8 @@
                 <value />
               </callback>
             </channel_3>
-            <channel_4 disabled="true">
-              <enabled disabled="true">
+            <channel_4>
+              <enabled>
                 <value>false</value>
               </enabled>
               <frequency disabled="true">
@@ -3249,8 +3278,8 @@
                 <value />
               </callback>
             </channel_4>
-            <channel_5 disabled="true">
-              <enabled disabled="true">
+            <channel_5>
+              <enabled>
                 <value>false</value>
               </enabled>
               <frequency disabled="true">
@@ -3260,8 +3289,8 @@
                 <value />
               </callback>
             </channel_5>
-            <channel_6 disabled="true">
-              <enabled disabled="true">
+            <channel_6>
+              <enabled>
                 <value>false</value>
               </enabled>
               <frequency disabled="true">
@@ -3271,8 +3300,8 @@
                 <value />
               </callback>
             </channel_6>
-            <channel_7 disabled="true">
-              <enabled disabled="true">
+            <channel_7>
+              <enabled>
                 <value>false</value>
               </enabled>
               <frequency disabled="true">
@@ -3286,8 +3315,8 @@
               <value>8</value>
             </noofchannels>
           </pit0>
-          <pit1 disabled="true">
-            <pit1 disabled="true">
+          <pit1>
+            <pit1>
               <value>false</value>
             </pit1>
             <channel_0 disabled="true">

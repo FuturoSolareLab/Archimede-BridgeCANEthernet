@@ -22,6 +22,7 @@
 
 #include "spc5_edma.h"
 #include "siul_lld.h"
+#include "pit_lld.h"
 #include "serial_lld.h"
 #include "can_lld.h"
 

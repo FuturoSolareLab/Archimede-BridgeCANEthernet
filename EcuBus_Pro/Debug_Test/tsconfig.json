@@ -1,0 +1,25 @@
+{
+    "compilerOptions": {
+        "module": "node16",
+        "esModuleInterop": true,
+        "allowSyntheticDefaultImports": true,
+        "target": "es2022",
+        "skipLibCheck": true,
+        "noImplicitAny": true,
+        "moduleResolution": "node16",
+        "sourceMap": true,
+        "outDir": ".ScriptBuild",
+        "resolveJsonModule": true,
+        "types": [
+            "node",
+            "ECB"
+        ]
+    },
+    "files": [
+        "SoloMotor_Sim.ts",
+        "BMS.ts",
+        "MPPT.ts",
+        "Light.ts",
+        "Test.ts"
+    ]
+}

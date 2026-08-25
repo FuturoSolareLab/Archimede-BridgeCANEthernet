@@ -86,6 +86,8 @@ CANConfig can_config_mcanconf = {
   {
   {0x0UL,0UL,0U,7U}, /* standard filter 0*/
   {0x0UL,0x7ffUL,CAN_FILTER_RANGE,CAN_FIFO0}, /* standard filter 1*/
+  {0x400ff80UL,0x40e8010UL,CAN_FILTER_RANGE,CAN_FIFO0}, /* standard filter 2*/
+  {0x580UL,0x582UL,CAN_FILTER_RANGE,CAN_FIFO1}, /* standard filter 3*/
   {0UL,0UL,0U,0U},  /* standard_filter unused 0 (MISRA Compliance) */
   {0UL,0UL,0U,0U},  /* standard_filter unused 1 (MISRA Compliance) */
   },
@@ -95,7 +97,7 @@ CANConfig can_config_mcanconf = {
   {0UL,0UL,0U,0U},  /* extended_filter unused 1 (MISRA Compliance) */
   },
 /* number of standard filters */
-  2U,
+  4U,
 /* number of extended filters */
   0U,
   /* number of Rx Buffers */
@@ -103,7 +105,7 @@ CANConfig can_config_mcanconf = {
 /* number of FIFO 0 Buffers */
   1U,
 /* number of FIFO 1 Buffers */
-  0U,
+  1U,
 /* Transmission Mode */
   CAN_DEDICATED_TXBUFFER,
 /* number of Tx Buffers */
