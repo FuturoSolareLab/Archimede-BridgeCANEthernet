@@ -1,13 +1,13 @@
 {
   "data": {
     "devices": {
-      "e332bac9-d18b-41e8-bbe5-20f9cce89ef8": {
+      "d07dadd9-6259-4b51-afda-bac45ff87a73": {
         "type": "can",
         "canDevice": {
-          "id": "e332bac9-d18b-41e8-bbe5-20f9cce89ef8",
-          "name": "SLCAN_0",
-          "handle": "COM4",
-          "vendor": "slcan",
+          "id": "d07dadd9-6259-4b51-afda-bac45ff87a73",
+          "name": "PEAK_0",
+          "handle": 81,
+          "vendor": "peak",
           "canfd": false,
           "database": "",
           "bitrate": {
@@ -17,7 +17,7 @@
             "preScaler": 10,
             "freq": 500000,
             "clock": "80",
-            "_X_ROW_KEY": "row_20"
+            "_X_ROW_KEY": "row_19"
           }
         }
       }
@@ -28,7 +28,7 @@
         "type": "can",
         "id": "959437ed-ebf8-4ea1-91db-fff735c64e00",
         "devices": [
-          "e332bac9-d18b-41e8-bbe5-20f9cce89ef8"
+          "d07dadd9-6259-4b51-afda-bac45ff87a73"
         ],
         "action": [
           {
@@ -39,7 +39,7 @@
             },
             "name": "",
             "id": "80",
-            "channel": "e332bac9-d18b-41e8-bbe5-20f9cce89ef8",
+            "channel": "",
             "type": "can",
             "dlc": 1,
             "data": []
@@ -52,12 +52,220 @@
             },
             "name": "",
             "id": "0400ff80",
-            "channel": "e332bac9-d18b-41e8-bbe5-20f9cce89ef8",
+            "channel": "",
             "type": "can",
             "dlc": 8,
             "data": [
               "01"
             ]
+          },
+          {
+            "uuid": "142cb123-1075-4365-9dd0-eb1cc8208b75",
+            "trigger": {
+              "type": "periodic",
+              "period": 1000
+            },
+            "name": "",
+            "id": "400",
+            "channel": "d07dadd9-6259-4b51-afda-bac45ff87a73",
+            "type": "can",
+            "dlc": 8,
+            "data": []
+          },
+          {
+            "uuid": "cd64b8c9-bc16-4825-8e78-0d4010071624",
+            "trigger": {
+              "type": "periodic",
+              "period": 500
+            },
+            "name": "",
+            "id": "701",
+            "channel": "d07dadd9-6259-4b51-afda-bac45ff87a73",
+            "type": "can",
+            "dlc": 8,
+            "data": []
+          },
+          {
+            "uuid": "01aef4a4-260b-4791-8047-a385c64896e1",
+            "trigger": {
+              "type": "periodic",
+              "period": 500
+            },
+            "name": "",
+            "id": "703",
+            "channel": "d07dadd9-6259-4b51-afda-bac45ff87a73",
+            "type": "can",
+            "dlc": 8,
+            "data": []
+          },
+          {
+            "uuid": "02478ca1-50ee-4b01-b9a0-2f06f6e9757a",
+            "trigger": {
+              "type": "periodic",
+              "period": 500
+            },
+            "name": "",
+            "id": "704",
+            "channel": "d07dadd9-6259-4b51-afda-bac45ff87a73",
+            "type": "can",
+            "dlc": 8,
+            "data": []
+          },
+          {
+            "uuid": "3556068e-20f0-4879-a529-39ab5ad21122",
+            "trigger": {
+              "type": "periodic",
+              "period": 500
+            },
+            "name": "",
+            "id": "705",
+            "channel": "d07dadd9-6259-4b51-afda-bac45ff87a73",
+            "type": "can",
+            "dlc": 8,
+            "data": []
+          },
+          {
+            "uuid": "43a29178-12fd-438d-992e-adeb97cbde44",
+            "trigger": {
+              "type": "periodic",
+              "period": 500
+            },
+            "name": "",
+            "id": "702",
+            "channel": "d07dadd9-6259-4b51-afda-bac45ff87a73",
+            "type": "can",
+            "dlc": 8,
+            "data": []
+          },
+          {
+            "uuid": "87775a5f-e81d-406a-930e-0a9a04859ec4",
+            "trigger": {
+              "type": "periodic",
+              "period": 100
+            },
+            "name": "",
+            "id": "282",
+            "channel": "d07dadd9-6259-4b51-afda-bac45ff87a73",
+            "type": "can",
+            "dlc": 8,
+            "data": []
+          },
+          {
+            "uuid": "846ddc51-d8d2-412c-9414-333394a9d878",
+            "trigger": {
+              "type": "periodic",
+              "period": 100
+            },
+            "name": "",
+            "id": "283",
+            "channel": "d07dadd9-6259-4b51-afda-bac45ff87a73",
+            "type": "can",
+            "dlc": 8,
+            "data": []
+          },
+          {
+            "uuid": "64688375-f189-4b1a-b055-1f3aecfe79bf",
+            "trigger": {
+              "type": "periodic",
+              "period": 100
+            },
+            "name": "",
+            "id": "284",
+            "channel": "d07dadd9-6259-4b51-afda-bac45ff87a73",
+            "type": "can",
+            "dlc": 8,
+            "data": []
+          },
+          {
+            "uuid": "521b94c7-020a-4859-996b-434bf2473cf9",
+            "trigger": {
+              "type": "periodic",
+              "period": 100
+            },
+            "name": "",
+            "id": "285",
+            "channel": "d07dadd9-6259-4b51-afda-bac45ff87a73",
+            "type": "can",
+            "dlc": 8,
+            "data": []
+          },
+          {
+            "uuid": "c886669a-f949-4884-97ec-1a66326d2f69",
+            "trigger": {
+              "type": "periodic",
+              "period": 100
+            },
+            "name": "",
+            "id": "286",
+            "channel": "d07dadd9-6259-4b51-afda-bac45ff87a73",
+            "type": "can",
+            "dlc": 8,
+            "data": []
+          },
+          {
+            "uuid": "7018cd4c-5175-4c03-af15-c0fbe58a76b3",
+            "trigger": {
+              "type": "periodic",
+              "period": 100
+            },
+            "name": "",
+            "id": "292",
+            "channel": "d07dadd9-6259-4b51-afda-bac45ff87a73",
+            "type": "can",
+            "dlc": 8,
+            "data": []
+          },
+          {
+            "uuid": "2acf65a7-5682-47a1-9926-5c2829480369",
+            "trigger": {
+              "type": "periodic",
+              "period": 100
+            },
+            "name": "",
+            "id": "293",
+            "channel": "d07dadd9-6259-4b51-afda-bac45ff87a73",
+            "type": "can",
+            "dlc": 8,
+            "data": []
+          },
+          {
+            "uuid": "b5c4b7e6-4cbb-4e90-9565-702607ae6a99",
+            "trigger": {
+              "type": "periodic",
+              "period": 100
+            },
+            "name": "",
+            "id": "294",
+            "channel": "d07dadd9-6259-4b51-afda-bac45ff87a73",
+            "type": "can",
+            "dlc": 8,
+            "data": []
+          },
+          {
+            "uuid": "4cb1880d-a705-479c-a09d-e072ca297c01",
+            "trigger": {
+              "type": "periodic",
+              "period": 100
+            },
+            "name": "",
+            "id": "295",
+            "channel": "d07dadd9-6259-4b51-afda-bac45ff87a73",
+            "type": "can",
+            "dlc": 8,
+            "data": []
+          },
+          {
+            "uuid": "04665981-90b1-47b8-85f7-707aa9f35923",
+            "trigger": {
+              "type": "periodic",
+              "period": 100
+            },
+            "name": "",
+            "id": "296",
+            "channel": "d07dadd9-6259-4b51-afda-bac45ff87a73",
+            "type": "can",
+            "dlc": 8,
+            "data": []
           }
         ]
       }
@@ -69,7 +277,7 @@
         "name": "SoloMotorRespons",
         "id": "7b434857-755f-4ad6-86c1-00d35ce664d2",
         "channel": [
-          "e332bac9-d18b-41e8-bbe5-20f9cce89ef8"
+          "d07dadd9-6259-4b51-afda-bac45ff87a73"
         ],
         "script": "SoloMotor_Sim.ts",
         "workNode": ""
@@ -78,7 +286,7 @@
         "name": "BMS",
         "id": "dbcb29d0-bc4b-4a5f-89be-e83dffa11a14",
         "channel": [
-          "e332bac9-d18b-41e8-bbe5-20f9cce89ef8"
+          "d07dadd9-6259-4b51-afda-bac45ff87a73"
         ],
         "script": "BMS.ts",
         "workNode": ""
@@ -86,27 +294,21 @@
       "dcb19906-86dd-452d-902e-c055c8c39d18": {
         "name": "MPPT",
         "id": "dcb19906-86dd-452d-902e-c055c8c39d18",
-        "channel": [
-          "e332bac9-d18b-41e8-bbe5-20f9cce89ef8"
-        ],
+        "channel": [],
         "script": "MPPT.ts",
         "workNode": ""
       },
       "61540bd4-5440-49ab-a1fb-366526b7a02c": {
         "name": "Light",
         "id": "61540bd4-5440-49ab-a1fb-366526b7a02c",
-        "channel": [
-          "e332bac9-d18b-41e8-bbe5-20f9cce89ef8"
-        ],
+        "channel": [],
         "script": "Light.ts",
         "workNode": ""
       },
       "e11a6069-f6c9-45d1-931f-cb6848590ad4": {
         "name": "Test",
         "id": "e11a6069-f6c9-45d1-931f-cb6848590ad4",
-        "channel": [
-          "e332bac9-d18b-41e8-bbe5-20f9cce89ef8"
-        ],
+        "channel": [],
         "script": "Test.ts",
         "workNode": ""
       }
@@ -280,7 +482,22 @@
       }
     },
     "panels": {},
-    "logs": {},
+    "logs": {
+      "727a4c0b-8603-4af7-9dd3-34567331c02c": {
+        "name": "Logger 1",
+        "id": "727a4c0b-8603-4af7-9dd3-34567331c02c",
+        "type": "file",
+        "format": "asc",
+        "path": "log.txt",
+        "channel": [
+          "d07dadd9-6259-4b51-afda-bac45ff87a73"
+        ],
+        "method": [
+          "canBase",
+          "canError"
+        ]
+      }
+    },
     "traces": {
       "trace": {
         "id": "trace",
@@ -370,53 +587,12 @@
   },
   "project": {
     "wins": {
-      "message": {
-        "pos": {
-          "x": 383,
-          "y": 219,
-          "w": 2561.33,
-          "h": 456.66700000000003
-        },
-        "options": {
-          "params": {}
-        },
-        "title": "message",
-        "label": "Message",
-        "id": "message",
-        "layoutType": "bottom",
-        "hide": true
-      },
-      "959437ed-ebf8-4ea1-91db-fff735c64e00_ia": {
-        "pos": {
-          "x": 6,
-          "y": 0,
-          "w": 919,
-          "h": 676.323
-        },
-        "title": "cani",
-        "label": "IA",
-        "id": "959437ed-ebf8-4ea1-91db-fff735c64e00_ia",
-        "options": {
-          "params": {
-            "edit-index": "959437ed-ebf8-4ea1-91db-fff735c64e00"
-          },
-          "name": "Can IA"
-        },
-        "hide": false,
-        "backupPos": {
-          "x": -424,
-          "y": 100,
-          "w": 2560,
-          "h": 776.333
-        },
-        "isMax": false
-      },
       "trace": {
         "pos": {
-          "x": 921,
-          "y": 1,
-          "w": 1602,
-          "h": 754
+          "x": 654,
+          "y": 0,
+          "w": 922,
+          "h": 653
         },
         "title": "trace",
         "label": "Trace",
@@ -427,19 +603,33 @@
           },
           "name": "Trace"
         },
-        "hide": false
-      },
-      "network": {
-        "pos": {
-          "x": 264,
-          "y": 202.15625,
-          "w": 600,
-          "h": 400
+        "hide": false,
+        "backupPos": {
+          "x": -20,
+          "y": 0,
+          "w": 1602,
+          "h": 754
         },
-        "title": "network",
-        "label": "Network",
-        "id": "network",
-        "options": {}
+        "isMax": false,
+        "isExternal": false
+      },
+      "959437ed-ebf8-4ea1-91db-fff735c64e00_ia": {
+        "pos": {
+          "x": -8,
+          "y": 0,
+          "w": 662,
+          "h": 652
+        },
+        "title": "cani",
+        "label": "IA",
+        "id": "959437ed-ebf8-4ea1-91db-fff735c64e00_ia",
+        "options": {
+          "params": {
+            "edit-index": "959437ed-ebf8-4ea1-91db-fff735c64e00"
+          },
+          "name": "Can IA"
+        },
+        "hide": false
       }
     }
   }
