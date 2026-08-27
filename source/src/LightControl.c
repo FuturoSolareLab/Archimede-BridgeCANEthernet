@@ -32,7 +32,7 @@ void ReadStateLight(void){
 	if(siul_lld_readpad(PORT_PIN_GPIO_frecciaSX, PIN_GPIO_frecciaSX) == 1) frecciaSX = 0xff;
 	else frecciaSX = 0x00;
 
-	if(siul_lld_readpad(PORT_PIN_GPIO_anabbaglianteF, PIN_GPIO_anabbaglianteF) == 1) abbaglianteF = 0xff; //dovrebbe essere abbaglianteF
+	if(siul_lld_readpad(PORT_PIN_GPIO_abbaglianteF, PIN_GPIO_abbaglianteF) == 1) abbaglianteF = 0xff; //dovrebbe essere abbaglianteF
 	else abbaglianteF = 0x00;
 
 	if(siul_lld_readpad(PORT_PIN_GPIO_frecciaDX, PIN_GPIO_frecciaDX) == 1) frecciaDX = 0xff;

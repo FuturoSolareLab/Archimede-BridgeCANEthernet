@@ -40,7 +40,7 @@
 #define PIN_TX_0_0                  14U
 #define PIN_RX_0_0                  15U
 #define PIN_GPIO_frecciaSX          6U
-#define PIN_GPIO_anabbaglianteF     7U
+#define PIN_GPIO_abbaglianteF       7U
 #define PIN_GPIO_frecciaDX          14U
 #define PIN_GPIO_posizione          15U
 #define PIN_GPIO_anabbagliante      13U
@@ -56,7 +56,7 @@
 #define PORT_PIN_TX_0_0             PORT_D
 #define PORT_PIN_RX_0_0             PORT_D
 #define PORT_PIN_GPIO_frecciaSX     PORT_D
-#define PORT_PIN_GPIO_anabbaglianteF PORT_D
+#define PORT_PIN_GPIO_abbaglianteF  PORT_D
 #define PORT_PIN_GPIO_frecciaDX     PORT_F
 #define PORT_PIN_GPIO_posizione     PORT_F
 #define PORT_PIN_GPIO_anabbagliante PORT_G
@@ -72,7 +72,7 @@
 #define MSCR_IO_PIN_TX_0_0          MSCR_IO_INDEX(PORT_PIN_TX_0_0, PIN_TX_0_0)
 #define MSCR_IO_PIN_RX_0_0          MSCR_IO_INDEX(PORT_PIN_RX_0_0, PIN_RX_0_0)
 #define MSCR_IO_PIN_GPIO_frecciaSX  MSCR_IO_INDEX(PORT_PIN_GPIO_frecciaSX, PIN_GPIO_frecciaSX)
-#define MSCR_IO_PIN_GPIO_anabbaglianteF MSCR_IO_INDEX(PORT_PIN_GPIO_anabbaglianteF, PIN_GPIO_anabbaglianteF)
+#define MSCR_IO_PIN_GPIO_abbaglianteF MSCR_IO_INDEX(PORT_PIN_GPIO_abbaglianteF, PIN_GPIO_abbaglianteF)
 #define MSCR_IO_PIN_GPIO_frecciaDX  MSCR_IO_INDEX(PORT_PIN_GPIO_frecciaDX, PIN_GPIO_frecciaDX)
 #define MSCR_IO_PIN_GPIO_posizione  MSCR_IO_INDEX(PORT_PIN_GPIO_posizione, PIN_GPIO_posizione)
 #define MSCR_IO_PIN_GPIO_anabbagliante MSCR_IO_INDEX(PORT_PIN_GPIO_anabbagliante, PIN_GPIO_anabbagliante)

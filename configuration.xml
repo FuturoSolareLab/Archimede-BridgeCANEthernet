@@ -679,7 +679,7 @@
             <pin_settings>
               <pin_identification>
                 <identifier>
-                  <value>PIN_GPIO_anabbaglianteF</value>
+                  <value>PIN_GPIO_abbaglianteF</value>
                 </identifier>
                 <port index="3">
                   <value>PORT_D</value>
