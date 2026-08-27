@@ -17,29 +17,23 @@
  */
 void ReadStateLight(void){
 
-	if(siul_lld_readpad(PORT_PIN_GPIO_anabbagliante, PIN_GPIO_anabbagliante) == 1) anabbagliante = 0xff;
-	else anabbagliante = 0x00;
+	if(siul_lld_readpad(PORT_PIN_GPIO_anabbagliante, PIN_GPIO_anabbagliante) == 1) GPIORXBuffer |= (1 << anabbagliante);
+	else GPIORXBuffer &= ~(1 << anabbagliante);
 
-	if(siul_lld_readpad(PORT_PIN_GPIO_fendinebbia, PIN_GPIO_fendinebbia) == 1) fendinebbia = 0xff;
-	else fendinebbia = 0x00;
+	if(siul_lld_readpad(PORT_PIN_GPIO_fendinebbia, PIN_GPIO_fendinebbia) == 1) GPIORXBuffer |= (1 << anabbagliante);
+	else GPIORXBuffer &= ~(1 << fendinebbia);
 
-	if(siul_lld_readpad(PORT_PIN_GPIO_posizione, PIN_GPIO_posizione) == 1) posizione = 0xff;
-	else posizione = 0x00;
+	if(siul_lld_readpad(PORT_PIN_GPIO_posizione, PIN_GPIO_posizione) == 1) GPIORXBuffer |= (1 << posizione);
+	else GPIORXBuffer &= ~(1 << posizione);
 
-	if(siul_lld_readpad(PORT_PIN_GPIO_clacson, PIN_GPIO_clacson) == 1) clacson = 0xff;
-	else clacson = 0x00;
+	if(siul_lld_readpad(PORT_PIN_GPIO_frecciaSX, PIN_GPIO_frecciaSX) == 1) GPIORXBuffer |= (1 << frecciaSX);
+	else GPIORXBuffer &= ~(1 << frecciaSX);
 
-	if(siul_lld_readpad(PORT_PIN_GPIO_frecciaSX, PIN_GPIO_frecciaSX) == 1) frecciaSX = 0xff;
-	else frecciaSX = 0x00;
+	if(siul_lld_readpad(PORT_PIN_GPIO_frecciaDX, PIN_GPIO_frecciaDX) == 1) GPIORXBuffer |= (1 << frecciaDX);
+	else GPIORXBuffer &= ~(1 << frecciaDX);
 
-	if(siul_lld_readpad(PORT_PIN_GPIO_anabbaglianteF, PIN_GPIO_anabbaglianteF) == 1) abbaglianteF = 0xff; //dovrebbe essere abbaglianteF
-	else abbaglianteF = 0x00;
-
-	if(siul_lld_readpad(PORT_PIN_GPIO_frecciaDX, PIN_GPIO_frecciaDX) == 1) frecciaDX = 0xff;
-	else frecciaDX = 0x00;
-
-	if(siul_lld_readpad(PORT_PIN_GPIO_abbagliante, PIN_GPIO_abbagliante) == 1) abbagliante = 0xff;
-	else abbagliante = 0x00;
+	if(siul_lld_readpad(PORT_PIN_GPIO_abbagliante, PIN_GPIO_abbagliante) == 1) GPIORXBuffer |= (1 << abbagliante);
+	else GPIORXBuffer &= ~(1 << abbagliante);
 }
 
 /**
@@ -62,13 +56,15 @@ CANTxFrame* LightControl_GetStatus(void){
 	tmp_BufferTx.IDE = CAN_ID_STD;
 
 	//inizializzazione messaggio
-	tmp_BufferTx.data8[0] = posizione;
-	tmp_BufferTx.data8[1] = frecciaDX;
-	tmp_BufferTx.data8[2] = frecciaSX;
-	tmp_BufferTx.data8[3] = anabbagliante;
-	tmp_BufferTx.data8[4] = abbagliante + abbaglianteF;
-	tmp_BufferTx.data8[5] = fendinebbia;
-	tmp_BufferTx.data8[6] = stop;
+//	tmp_BufferTx.data8[0] = posizione;
+//	tmp_BufferTx.data8[1] = frecciaDX;
+//	tmp_BufferTx.data8[2] = frecciaSX;
+//	tmp_BufferTx.data8[3] = anabbagliante;
+//	tmp_BufferTx.data8[4] = abbagliante + abbaglianteF;
+//	tmp_BufferTx.data8[5] = fendinebbia;
+//	tmp_BufferTx.data8[6] = stop;
+
+	tmp_BufferTx.data8[0] = GPIORXBuffer;
 
 	return &tmp_BufferTx;
 }
