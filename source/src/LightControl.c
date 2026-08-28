@@ -17,32 +17,26 @@
  */
 void ReadStateLight(void){
 
-	if(siul_lld_readpad(PORT_PIN_GPIO_anabbagliante, PIN_GPIO_anabbagliante) == 1) GPIORXBuffer[0] |= (1 << anabbagliante);
-	else GPIORXBuffer[0] &= ~(1 << anabbagliante);
+	if(siul_lld_readpad(PORT_PIN_GPIO_anabbagliante, PIN_GPIO_anabbagliante) == 1) GPIORXBuffer |= (1 << anabbagliante);
+	else GPIORXBuffer &= ~(1 << anabbagliante);
 
-	if(siul_lld_readpad(PORT_PIN_GPIO_fendinebbia, PIN_GPIO_fendinebbia) == 1) GPIORXBuffer[0] |= (1 << anabbagliante);
-	else GPIORXBuffer[0] &= ~(1 << fendinebbia);
+	if(siul_lld_readpad(PORT_PIN_GPIO_posizione, PIN_GPIO_posizione) == 1) GPIORXBuffer |= (1 << posizione);
+	else GPIORXBuffer &= ~(1 << posizione);
 
-	if(siul_lld_readpad(PORT_PIN_GPIO_posizione, PIN_GPIO_posizione) == 1) GPIORXBuffer[0] |= (1 << posizione);
-	else GPIORXBuffer[0] &= ~(1 << posizione);
+	if(siul_lld_readpad(PORT_PIN_GPIO_frecciaSX, PIN_GPIO_frecciaSX) == 1) GPIORXBuffer |= (1 << frecciaSX);
+	else GPIORXBuffer &= ~(1 << frecciaSX);
 
-	if(siul_lld_readpad(PORT_PIN_GPIO_frecciaSX, PIN_GPIO_frecciaSX) == 1) GPIORXBuffer[0] |= (1 << frecciaSX);
-	else GPIORXBuffer[0] &= ~(1 << frecciaSX);
+	if(siul_lld_readpad(PORT_PIN_GPIO_frecciaDX, PIN_GPIO_frecciaDX) == 1) GPIORXBuffer |= (1 << frecciaDX);
+	else GPIORXBuffer &= ~(1 << frecciaDX);
 
-	if(siul_lld_readpad(PORT_PIN_GPIO_frecciaDX, PIN_GPIO_frecciaDX) == 1) GPIORXBuffer[0] |= (1 << frecciaDX);
-	else GPIORXBuffer[0] &= ~(1 << frecciaDX);
+	if(siul_lld_readpad(PORT_PIN_GPIO_abbagliante, PIN_GPIO_abbagliante) == 1) GPIORXBuffer |= (1 << abbagliante);
+	else GPIORXBuffer &= ~(1 << abbagliante);
 
-	if(siul_lld_readpad(PORT_PIN_GPIO_abbagliante, PIN_GPIO_abbagliante) == 1) GPIORXBuffer[0] |= (1 << abbagliante);
-	else GPIORXBuffer[0] &= ~(1 << abbagliante);
+	if(siul_lld_readpad(PORT_PIN_GPIO_retro, PIN_GPIO_retro) == 1) GPIORXBuffer |= (1 << retro);
+	else GPIORXBuffer &= ~(1 << retro);
 
-	if(siul_lld_readpad(PORT_PIN_GPIO_retronebbia, PIN_GPIO_retronebbia) == 1) GPIORXBuffer[0] |= (1 << retronebbia);
-	else GPIORXBuffer[0] &= ~(1 << retronebbia);
-
-	if(siul_lld_readpad(PORT_PIN_GPIO_retro, PIN_GPIO_retro) == 1) GPIORXBuffer[0] |= (1 << retro);
-	else GPIORXBuffer[0] &= ~(1 << retro);
-
-	if(siul_lld_readpad(PORT_PIN_GPIO_stop, PIN_GPIO_stop) == 1) GPIORXBuffer[1] |= (1 << stop);
-	else GPIORXBuffer[1] &= ~(1 << stop);
+	if(siul_lld_readpad(PORT_PIN_GPIO_stop, PIN_GPIO_stop) == 1) GPIORXBuffer |= (1 << stop);
+	else GPIORXBuffer &= ~(1 << stop);
 }
 
 /**
@@ -73,8 +67,7 @@ CANTxFrame* LightControl_GetStatus(void){
 //	tmp_BufferTx.data8[5] = fendinebbia;
 //	tmp_BufferTx.data8[6] = stop;
 
-	tmp_BufferTx.data8[0] = GPIORXBuffer[0];
-	tmp_BufferTx.data8[1] = GPIORXBuffer[1];
+	tmp_BufferTx.data8[0] = GPIORXBuffer;
 
 	return &tmp_BufferTx;
 }

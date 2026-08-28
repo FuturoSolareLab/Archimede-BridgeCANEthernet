@@ -23,16 +23,14 @@
 //uint8_t abbagliante;
 //uint8_t stop;
 
-uint8_t GPIORXBuffer[2];
+uint8_t GPIORXBuffer;
 
 #define posizione     0
 #define anabbagliante 1
-#define retronebbia   2
-#define abbagliante   3
-#define stop          4
-#define frecciaDX     5
-#define frecciaSX     6
-#define fendinebbia   7
-#define retro         0
+#define abbagliante   2
+#define stop          3
+#define frecciaDX     4
+#define frecciaSX     5
+#define retro         6
 
 #endif /* CFG_LIGHTCONTROL_CFG_H_ */
