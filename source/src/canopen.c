@@ -8,6 +8,7 @@
 
 //#include "timer.h"
 #include "canopen.h"
+#include "PowerMng.h"
 
 #include <string.h>
 #include "canopen_cfg.h"
@@ -17,6 +18,14 @@
 
 #define SDO_TIMEOUT_MS 200
 #define SDO_RETRIES    1
+
+extern uint16_t Voltage_Battery_1;
+extern uint16_t Voltage_Battery_2;
+extern uint16_t Voltage_VBus;
+
+extern uint16_t Current_Battery_1;
+extern uint16_t Current_Battery_2;
+extern uint16_t Current_MPPT;
 
 //extern volatile bool Sync_Request_canopen;
 
@@ -56,6 +65,20 @@ void mcanconf_CAN_SoloMotor_Callback(uint32_t msgbuf, CANRxFrame crfp){
 		break;
 	case TPDO6_CAN_ID_BASE_1:
 		TPDO_Sts_Motor[0].TPDO6_TempBoard = crfp.data32[0] / 131072;
+		break;
+		/* BMS Read Status */
+	case ID_BMS1_TotInfor1:
+		Voltage_Battery_1 = crfp.data16[0];				// Total voltage 0.1V/bit
+		Current_Battery_1 = crfp.data16[1] + 30000;		// Curr: current 0.1A/bit offset -30000
+		break;
+	case ID_BMS1_TotInfor2:
+		Voltage_Battery_2 = crfp.data16[0];				// Total voltage 0.1V/bit
+		Current_Battery_2 = crfp.data16[1] + 30000;		// Curr: current 0.1A/bit offset -30000
+		break;
+		/* MPPT Read Status */
+	case ID_MPPT_Status:
+		Voltage_VBus = crfp.data16[0] / 100;			// Vbus 1mV/bit --> Convertito a 0.1V/bit
+		Current_MPPT = crfp.data16[1] / 100;			// Curr: 1mA/bit --> Convertito a 0.1A/bit
 		break;
 	}
 }

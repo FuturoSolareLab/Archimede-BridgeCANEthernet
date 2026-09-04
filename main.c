@@ -19,6 +19,7 @@
 #include "serial_lld_cfg.h"
 #include "pit_lld_cfg.h"
 #include "LightControl.h"
+#include "PowerMng.h"
 
 #include "can_hal.h"
 
@@ -64,24 +65,9 @@ void mcanconf_CANrxreceive(uint32_t msgbuf, CANRxFrame crfp) {
 //	CAN_DLC = crfp.DLC;
 //	CAN_data[0] = crfp.data32[0];
 //	CAN_data[1] = crfp.data32[1];
-
-	Handle_Req_newmsg = TRUE;		// Abbilitiamo il flag
-}
-
-//void mcanconf_CAN_Vehicle_Rx_Callback(uint32_t msgbuf, CANRxFrame crfp) {
-//	(void) msgbuf;  // Default
-//	(void) crfp;
-//
-//	/* Salviamo i dati */
-//	CAN_id = crfp.ID;
-//	CAN_DLC = crfp.DLC;
-//	CAN_data[0] = crfp.data32[0];
-//	CAN_data[1] = crfp.data32[1];
 //
 //	Handle_Req_newmsg = TRUE;		// Abbilitiamo il flag
-//}
-
-
+}
 
 /* Inizializzazione periferiche */
 void Init_Periferiche(void){
@@ -92,11 +78,11 @@ void Init_Periferiche(void){
 	sd_lld_start(&SD1, &serial_config_configuration_name);
 
 	pit_lld_init();
-	pit_lld_start(&PITD1, &pit0_config);
+	pit_lld_start(&PITD1, pit0_config);
 	pit_lld_channel_start(&PITD1, PIT0_CHANNEL_CH1);
 }
 
-void Init_CAN_msg(){
+void Init_CAN_msg(void){
 	BMS_msg.OPERATION = CAN_OP_NORMAL;
 	BMS_msg.TYPE = CAN_ID_XTD;
 	BMS_msg.ID	= ID_CAN_BMS;

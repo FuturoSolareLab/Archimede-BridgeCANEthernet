@@ -32,8 +32,8 @@ void ReadStateLight(void){
 	if(siul_lld_readpad(PORT_PIN_GPIO_abbagliante, PIN_GPIO_abbagliante) == 1) GPIORXBuffer |= (1 << abbagliante);
 	else GPIORXBuffer &= ~(1 << abbagliante);
 
-	if(siul_lld_readpad(PORT_PIN_GPIO_retro, PIN_GPIO_retro) == 1) GPIORXBuffer |= (1 << retro);
-	else GPIORXBuffer &= ~(1 << retro);
+//	if(siul_lld_readpad(PORT_PIN_GPIO_retro, PIN_GPIO_retro) == 1) GPIORXBuffer |= (1 << retro);
+//	else GPIORXBuffer &= ~(1 << retro);
 
 	if(siul_lld_readpad(PORT_PIN_GPIO_stop, PIN_GPIO_stop) == 1) GPIORXBuffer |= (1 << stop);
 	else GPIORXBuffer &= ~(1 << stop);

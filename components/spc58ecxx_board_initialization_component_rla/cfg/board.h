@@ -37,8 +37,12 @@
 #define PIN_RXD_0                   13U
 #define PIN_GPIO_clacson            14U
 #define PIN_GPIO_fendinebbia        4U
-#define PIN_GPIO_stop               10U
-#define PIN_GPIO_retro              11U
+#define OutRelPreCha1               10U
+#define PIN_GPIO_stop               11U
+#define InRelPreCharge              6U
+#define OutRelPreCha2               9U
+#define OutRelPower1                14U
+#define OutRelPower2                15U
 #define PIN_TX_0_0                  14U
 #define PIN_RX_0_0                  15U
 #define PIN_GPIO_frecciaSX          6U
@@ -46,6 +50,7 @@
 #define PIN_GPIO_frecciaDX          14U
 #define PIN_GPIO_posizione          15U
 #define PIN_GPIO_anabbagliante      13U
+#define InRelPower                  6U
 #define PIN_GPIO_abbagliante        14U
 
 /*
@@ -55,8 +60,12 @@
 #define PORT_PIN_RXD_0              PORT_A
 #define PORT_PIN_GPIO_clacson       PORT_A
 #define PORT_PIN_GPIO_fendinebbia   PORT_A
+#define PORT_OutRelPreCha1          PORT_B
 #define PORT_PIN_GPIO_stop          PORT_B
-#define PORT_PIN_GPIO_retro         PORT_B
+#define PORT_InRelPreCharge         PORT_B
+#define PORT_OutRelPreCha2          PORT_B
+#define PORT_OutRelPower1           PORT_C
+#define PORT_OutRelPower2           PORT_C
 #define PORT_PIN_TX_0_0             PORT_D
 #define PORT_PIN_RX_0_0             PORT_D
 #define PORT_PIN_GPIO_frecciaSX     PORT_D
@@ -64,6 +73,7 @@
 #define PORT_PIN_GPIO_frecciaDX     PORT_F
 #define PORT_PIN_GPIO_posizione     PORT_F
 #define PORT_PIN_GPIO_anabbagliante PORT_G
+#define PORT_InRelPower             PORT_G
 #define PORT_PIN_GPIO_abbagliante   PORT_M
 
 /*
@@ -73,8 +83,12 @@
 #define MSCR_IO_PIN_RXD_0           MSCR_IO_INDEX(PORT_PIN_RXD_0, PIN_RXD_0)
 #define MSCR_IO_PIN_GPIO_clacson    MSCR_IO_INDEX(PORT_PIN_GPIO_clacson, PIN_GPIO_clacson)
 #define MSCR_IO_PIN_GPIO_fendinebbia MSCR_IO_INDEX(PORT_PIN_GPIO_fendinebbia, PIN_GPIO_fendinebbia)
+#define MSCR_IO_OutRelPreCha1       MSCR_IO_INDEX(PORT_OutRelPreCha1, OutRelPreCha1)
 #define MSCR_IO_PIN_GPIO_stop       MSCR_IO_INDEX(PORT_PIN_GPIO_stop, PIN_GPIO_stop)
-#define MSCR_IO_PIN_GPIO_retro      MSCR_IO_INDEX(PORT_PIN_GPIO_retro, PIN_GPIO_retro)
+#define MSCR_IO_InRelPreCharge      MSCR_IO_INDEX(PORT_InRelPreCharge, InRelPreCharge)
+#define MSCR_IO_OutRelPreCha2       MSCR_IO_INDEX(PORT_OutRelPreCha2, OutRelPreCha2)
+#define MSCR_IO_OutRelPower1        MSCR_IO_INDEX(PORT_OutRelPower1, OutRelPower1)
+#define MSCR_IO_OutRelPower2        MSCR_IO_INDEX(PORT_OutRelPower2, OutRelPower2)
 #define MSCR_IO_PIN_TX_0_0          MSCR_IO_INDEX(PORT_PIN_TX_0_0, PIN_TX_0_0)
 #define MSCR_IO_PIN_RX_0_0          MSCR_IO_INDEX(PORT_PIN_RX_0_0, PIN_RX_0_0)
 #define MSCR_IO_PIN_GPIO_frecciaSX  MSCR_IO_INDEX(PORT_PIN_GPIO_frecciaSX, PIN_GPIO_frecciaSX)
@@ -82,6 +96,7 @@
 #define MSCR_IO_PIN_GPIO_frecciaDX  MSCR_IO_INDEX(PORT_PIN_GPIO_frecciaDX, PIN_GPIO_frecciaDX)
 #define MSCR_IO_PIN_GPIO_posizione  MSCR_IO_INDEX(PORT_PIN_GPIO_posizione, PIN_GPIO_posizione)
 #define MSCR_IO_PIN_GPIO_anabbagliante MSCR_IO_INDEX(PORT_PIN_GPIO_anabbagliante, PIN_GPIO_anabbagliante)
+#define MSCR_IO_InRelPower          MSCR_IO_INDEX(PORT_InRelPower, InRelPower)
 #define MSCR_IO_PIN_GPIO_abbagliante MSCR_IO_INDEX(PORT_PIN_GPIO_abbagliante, PIN_GPIO_abbagliante)
 
 /*
