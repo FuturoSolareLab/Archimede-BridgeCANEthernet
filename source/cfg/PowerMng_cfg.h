@@ -18,7 +18,8 @@
 
 #define MAX_DELTA_V_BATTERY_OPSTS        	20U   	// 2V --> 0.1V/bit differenza massima tra Batt1 e Batt2
 
-
+#define USER_DELAY_500						500U 	// 500 ms
+#define USER_DELAY_250						250U 	// 500 ms
 // messaggio CAN
 #define CAN_ID_RELSTS			0x236
 #define CAN_DLC_RELST			1U
@@ -27,5 +28,11 @@
 #define CAN_POS_RELPRECHARGE2	1U	// Posizione del bit sul byte
 #define CAN_POS_RELPOWER1		2U	// Posizione del bit sul byte
 #define CAN_POS_RELPOWER2		3U	// Posizione del bit sul byte
+
+
+// MPPT
+#define CAN_ID_MPPT_SET_COMMAND 	0x552		// ID del msg CAN per attivare le uscite
+#define CAN_DLC_MPPT_SET_COMMAND 	1U
+
 
 #endif /* CFG_POWERMNG_CFG_H_ */
