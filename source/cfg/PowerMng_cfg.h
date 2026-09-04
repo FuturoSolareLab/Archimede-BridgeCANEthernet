@@ -18,8 +18,8 @@
 
 #define MAX_DELTA_V_BATTERY_OPSTS        	20U   	// 2V --> 0.1V/bit differenza massima tra Batt1 e Batt2
 
-#define USER_DELAY_500						500U 	// 500 ms
-#define USER_DELAY_250						250U 	// 500 ms
+#define USER_DELAY_500						50U 	// 500 ms
+#define USER_DELAY_250						25U 	// 500 ms
 // messaggio CAN
 #define CAN_ID_RELSTS			0x236
 #define CAN_DLC_RELST			1U

@@ -124,6 +124,9 @@ int main(void) {
 	  }
 	  if(TIMER_Flag){
 		  TIMER_Flag = FALSE;
+
+		  PowerMng();
+
 		  if(TIMER_cnt % TIMER_NMT_BMS == 0){
 			  /* Invio messaggio per i BMS */
 			  can_lld_transmit(&CAND1, CAN_ANY_TXBUFFER, &BMS_msg);
