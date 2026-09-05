@@ -19,6 +19,7 @@
 #include "serial_lld_cfg.h"
 #include "pit_lld_cfg.h"
 #include "LightControl.h"
+#include "Manager.h"
 
 #include "can_hal.h"
 
@@ -30,10 +31,13 @@
  * Define timer for Network manager, base timer 100ms */
 #define TIMER_NMT_SOLOMOTOR		5 // Time 500ms
 #define TIMER_NMT_BMS			20 // Timer 2000 ms
-#define TIMER_LIGHT			5 // Time 500ms (nel progetto CentralUnit è 100ms)
+#define TIMER_LIGHT			    5 // Time 500ms (nel progetto CentralUnit è 100ms)
+#define TIMER_NMT_MANAGER       1
 
 uint8_t TIMER_cnt = 0;			// Counter tick
+uint8_t TIMER_cnt_Manager = 0;
 uint8_t TIMER_Flag = FALSE;
+uint8_t TIMER_Flag_Manager = FALSE;
 
 /* CAN msg */
 extern uint8_t Handle_Req_newmsg;	// Flag per inviare il msg
@@ -53,6 +57,12 @@ void Timer_tick_CallBck(void){
 	TIMER_cnt++;
 	TIMER_Flag = TRUE;
 }
+
+void Timer_Manager_Callback(void){
+	TIMER_cnt_Manager++;
+	TIMER_Flag_Manager = TRUE;
+}
+
 
 /* CAN interrupt */
 void mcanconf_CANrxreceive(uint32_t msgbuf, CANRxFrame crfp) {
@@ -155,6 +165,11 @@ int main(void) {
 			  Serial_TX_msg(LIGHT_msg->ID, LIGHT_msg->DLC, LIGHT_msg->data32);
 		  }
 		  if(TIMER_cnt == 100) TIMER_cnt = 0;
+	  }
+	  if(TIMER_Flag_Manager){
+		  if(TIMER_cnt_Manager % TIMER_NMT_MANAGER == 0){
+			  Manager_task();
+		  }
 	  }
   }
 }

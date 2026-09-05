@@ -308,7 +308,7 @@
 #define SPC5_PIT_USE_PIT0                   TRUE
 #define PIT0_CHANNEL_CH0_ENABLED            FALSE
 #define PIT0_CHANNEL_CH1_ENABLED            TRUE
-#define PIT0_CHANNEL_CH2_ENABLED            FALSE
+#define PIT0_CHANNEL_CH2_ENABLED            TRUE
 #define PIT0_CHANNEL_CH3_ENABLED            FALSE
 #define PIT0_CHANNEL_CH4_ENABLED            FALSE
 #define PIT0_CHANNEL_CH5_ENABLED            FALSE

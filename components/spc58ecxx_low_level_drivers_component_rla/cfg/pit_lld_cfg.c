@@ -33,7 +33,7 @@ PIT_CH_Config pit0_config[SPC5_PIT0_CHANNELS] ={
   ,
   {TRUE,10,Timer_tick_CallBck}
   ,
-  {FALSE,0,NULL}
+  {TRUE,100,Timer_Manager_Callback}
   ,
   {FALSE,0,NULL}
   ,

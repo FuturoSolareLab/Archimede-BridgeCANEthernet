@@ -57,6 +57,7 @@ extern "C" {
 #endif
 /*Callback Prototypes*/
   void Timer_tick_CallBck(void);
+  void Timer_Manager_Callback(void);
 #ifdef __cplusplus
 }
 #endif
