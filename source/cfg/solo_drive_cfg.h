@@ -8,11 +8,11 @@
 #ifndef CFG_SOLO_DRIVE_CFG_H_
 #define CFG_SOLO_DRIVE_CFG_H_
 
-typedef enum{
-	SDO_VBUS = 0,
-	SDO_SPEED,
-	SDO_TEMP
-};
+//typedef enum{
+//	SDO_VBUS = 0,
+//	SDO_SPEED,
+//	SDO_TEMP
+//};
 
 #define TPDO_DELAY_SYNC  0x01 // Dopo quanti Sync viene mandato questo messaggio
 

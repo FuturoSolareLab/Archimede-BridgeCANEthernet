@@ -24,7 +24,8 @@
 #define ID_BMS2_TotInfor1		0x04028002
 #define ID_BMS2_TotInfor2		0x04038002
 
-
+void SendCAN_CommandRele(void);
+uint8_t PowerMng(void);
 
 
 typedef enum{

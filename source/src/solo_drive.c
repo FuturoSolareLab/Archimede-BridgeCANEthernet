@@ -35,9 +35,7 @@ bool SOLO_Enable(uint8_t node)
     return true;
 }
 
-void SOLO_NMT_Status(uint8_t NMT_Status){
-    CANopen_SendNMT(NMT_Status, 0);
-}
+
 
 void SOLO_TPDO_Setting(uint8_t node){
 

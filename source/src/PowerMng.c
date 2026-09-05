@@ -8,6 +8,7 @@
 #include "PowerMng.h"
 #include "PowerMng_cfg.h"
 #include "can_hal.h"
+#include "Serial.h"
 
 uint16_t TimeDelay, TimeCount;		// Per impostare il delya nel caso di accensione del rele
 
@@ -30,6 +31,8 @@ bool Sts_RelePower_1 = FALSE;
 bool Sts_RelePower_2 = FALSE;
 
 bool Sts_FaulRelePower = FALSE; // False NO FAULT
+
+bool ComandPVRele_Sts = FALSE; // Stato del relè
 
 Macchine_Sts_e Macchine_Sts = Mng_Init;
 
@@ -66,6 +69,22 @@ void Set_Rele(void){
 	siul_lld_writepad(PORT_OutRelPower1, OutRelPower1, Sts_RelePower_1);
 	siul_lld_writepad(PORT_OutRelPower2, OutRelPower2, Sts_RelePower_2);
 
+//	// Costruiamo il Frame e lo inviamo
+//	CAN_FrPower.data[0] = (uint8_t)(
+//		      ((Sts_RelePreCharge_1 & 0x01U) << CAN_POS_RELPRECHARGE1) |
+//		      ((Sts_RelePreCharge_2 & 0x01U) << CAN_POS_RELPRECHARGE2) |
+//		      ((Sts_RelePower_1     & 0x01U) << CAN_POS_RELPOWER1)     |
+//		      ((Sts_RelePower_2     & 0x01U) << CAN_POS_RELPOWER2));
+//
+//	CAN_Send(&CAN_FrPower);
+}
+
+void SendCAN_CommandRele(void)
+{
+	if(ComandPVRele_Sts) CAN_PVPower.data[0] = 0xE0;
+		else CAN_PVPower.data[0] = 0x00;
+	CAN_Send(&CAN_PVPower);
+	Serial_TX_msg(CAN_PVPower.id, CAN_PVPower.dlc, (uint32_t*)CAN_PVPower.data);
 	// Costruiamo il Frame e lo inviamo
 	CAN_FrPower.data[0] = (uint8_t)(
 		      ((Sts_RelePreCharge_1 & 0x01U) << CAN_POS_RELPRECHARGE1) |
@@ -74,13 +93,7 @@ void Set_Rele(void){
 		      ((Sts_RelePower_2     & 0x01U) << CAN_POS_RELPOWER2));
 
 	CAN_Send(&CAN_FrPower);
-}
-
-void CommandToPV_Rele(bool tmp)
-{
-	if(tmp) CAN_PVPower.data[0] = 0xE0;
-		else CAN_PVPower.data[0] = 0x00;
-	CAN_Send(&CAN_PVPower);
+	Serial_TX_msg(CAN_FrPower.id, CAN_FrPower.dlc, (uint32_t*)CAN_FrPower.data);
 }
 
 uint8_t PowerMng(void){
@@ -113,11 +126,13 @@ uint8_t PowerMng(void){
 			/* Attivazione dei rele */
 			if((Status_SW_RelPreCharge == TRUE) && (!Sts_FaulRelePower))
 			{
-				Sts_RelePreCharge_1 = Sts_RelePreCharge_2 = TRUE;
+				Sts_RelePreCharge_1 = TRUE;
+				Sts_RelePreCharge_2 = TRUE;
 				Set_Rele();
 				Delay_User(USER_DELAY_250);			// Imposto un delay e aspetto che il relè sia chiuso
 			} else {
-				Sts_RelePreCharge_1 = Sts_RelePreCharge_2 = FALSE;
+				Sts_RelePreCharge_1 = FALSE;
+				Sts_RelePreCharge_2 = FALSE;
 				Set_Rele();
 				Delay_User(USER_DELAY_250);			// Imposto un delay e aspetto che il relè sia chiuso
 			}
@@ -197,7 +212,8 @@ uint8_t PowerMng(void){
 					if(Sts_RelePower_1 && Sts_RelePower_2 && (Sts_RelePreCharge_1 || Sts_RelePreCharge_2))
 					{
 						// 5) Attiva il Relè dei pannelli solari e spegne l'ultimo relè di precharge
-						CommandToPV_Rele(TRUE);
+						ComandPVRele_Sts = TRUE;
+						SendCAN_CommandRele();
 						Sts_RelePreCharge_1 = FALSE;
 						Sts_RelePreCharge_2 = FALSE;
 						Set_Rele();
@@ -219,7 +235,8 @@ uint8_t PowerMng(void){
 	case Mng_PreOFF:
 		if(!Status_SW_RelPower)
 		{
-			CommandToPV_Rele(FALSE);
+			ComandPVRele_Sts = FALSE;
+			SendCAN_CommandRele();
 			Sts_RelePower_1 = FALSE;
 			Sts_RelePower_2 = FALSE;
 			Sts_RelePreCharge_1 = FALSE;

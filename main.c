@@ -33,6 +33,8 @@
 #define TIMER_NMT_BMS			20 // Timer 2000 ms
 #define TIMER_LIGHT			5 // Time 500ms (nel progetto CentralUnit è 100ms)
 
+#define TIMER_SENDCANFR_RELE 10 // Timer 1000 ms
+
 uint8_t TIMER_cnt = 0;			// Counter tick
 uint8_t TIMER_Flag = FALSE;
 
@@ -120,7 +122,6 @@ int main(void) {
 	  if(Handle_Req_newmsg == TRUE){
 		  Handle_Req_newmsg = FALSE;
 		  Serial_RX_msg();
-
 	  }
 	  if(TIMER_Flag){
 		  TIMER_Flag = FALSE;
@@ -143,6 +144,10 @@ int main(void) {
 			  can_lld_transmit(&CAND1, CAN_ANY_TXBUFFER, &LIGHT_msg);
 			  Serial_TX_msg(LIGHT_msg->ID, LIGHT_msg->DLC, LIGHT_msg->data32);
 		  }
+		  if(TIMER_cnt % TIMER_SENDCANFR_RELE == 0){
+			  SendCAN_CommandRele();
+		  }
+
 		  if(TIMER_cnt == 100) TIMER_cnt = 0;
 	  }
   }
