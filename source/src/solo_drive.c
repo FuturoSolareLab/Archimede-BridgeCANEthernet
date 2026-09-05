@@ -22,7 +22,7 @@ bool SOLO_Init(uint8_t node)
     CANopen_SDO_Write(node, IDX_MODE, 0x00, 4);
 
 
-    return true;
+    return TRUE;
 }
 
 bool SOLO_Enable(uint8_t node)
@@ -32,7 +32,7 @@ bool SOLO_Enable(uint8_t node)
     CANopen_SDO_Write(node, IDX_CONTROLWORD, 0x00, 0x0007);
     CAN_DelayMs(10);
     CANopen_SDO_Write(node, IDX_CONTROLWORD, 0x00, 0x000F);
-    return true;
+    return TRUE;
 }
 
 

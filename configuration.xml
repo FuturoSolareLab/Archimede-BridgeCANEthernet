@@ -4379,7 +4379,7 @@
                 <value>true</value>
               </enabled>
               <frequency>
-                <value>10</value>
+                <value>100</value>
               </frequency>
               <callback>
                 <value>Timer_tick_CallBck</value>

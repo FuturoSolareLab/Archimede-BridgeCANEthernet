@@ -22,18 +22,20 @@
 #include "PowerMng.h"
 
 #include "can_hal.h"
+#include "Serial.h"
+#include "solo_drive.h"
 
 #define ID_CAN_BMS 0x0400FF80
 #define ID_CAN_SOLOMOTOR 0x80
 
 
 /* TIMER NMT
- * Define timer for Network manager, base timer 100ms */
-#define TIMER_NMT_SOLOMOTOR		5 // Time 500ms
-#define TIMER_NMT_BMS			20 // Timer 2000 ms
-#define TIMER_LIGHT			5 // Time 500ms (nel progetto CentralUnit è 100ms)
+ * Define timer for Network manager, base timer 10ms */
+#define TIMER_NMT_SOLOMOTOR		50 // Time 500ms
+#define TIMER_NMT_BMS			200 // Timer 2000 ms
+#define TIMER_LIGHT			50 // Time 500ms (nel progetto CentralUnit è 100ms)
 
-#define TIMER_SENDCANFR_RELE 10 // Timer 1000 ms
+#define TIMER_SENDCANFR_RELE 100 // Timer 1000 ms
 
 uint8_t TIMER_cnt = 0;			// Counter tick
 uint8_t TIMER_Flag = FALSE;
@@ -141,7 +143,7 @@ int main(void) {
 		  if(TIMER_cnt % TIMER_LIGHT == 0){
 			  /*invio stato luci*/
 			  LIGHT_msg = LightControl_GetStatus();
-			  can_lld_transmit(&CAND1, CAN_ANY_TXBUFFER, &LIGHT_msg);
+			  can_lld_transmit(&CAND1, CAN_ANY_TXBUFFER, LIGHT_msg);
 			  Serial_TX_msg(LIGHT_msg->ID, LIGHT_msg->DLC, LIGHT_msg->data32);
 		  }
 		  if(TIMER_cnt % TIMER_SENDCANFR_RELE == 0){

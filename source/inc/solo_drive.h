@@ -37,6 +37,7 @@ extern SOLO_State solo[3];
 
 bool SOLO_Init(uint8_t node);
 bool SOLO_Enable(uint8_t node);
+void SOLO_TPDO_Setting(uint8_t node);
 void SOLO_NMT_Status(uint8_t NMT_Status);
 void SOLO_SetTorque(uint8_t node, int32_t torque);
 
